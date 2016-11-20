@@ -1,0 +1,35 @@
+server:
+  port: 7001
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/troychn/spring-cloud-learning.git/
+          searchPaths: ConfigRepo
+          username: troylc@qq.com
+          password: ibmx2201003
+# git管理配置
+#spring.cloud.config.server.git.uri=http://git.oschina.net/didispace/SpringBoot-Learning/
+#spring.cloud.config.server.git.searchPaths=Chapter9-1-4/config-repo
+#spring.cloud.config.server.git.username=username
+#spring.cloud.config.server.git.password=password
+
+#spring.cloud.config.server.git.uri：配置git仓库位置
+#spring.cloud.config.server.git.searchPaths：配置仓库路径下的相对搜索位置，可以配置多个
+#spring.cloud.config.server.git.username：访问git仓库的用户名
+#spring.cloud.config.server.git.password：访问git仓库的用户密码
+
+# subversion管理配置
+#  cloud:
+#    config:
+#      server:
+#        svn:
+#          uri:
+#          search-paths:
+#          username:
+#          password:
+
+

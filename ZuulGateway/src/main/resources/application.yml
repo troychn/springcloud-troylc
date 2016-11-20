@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: api-geteway
+server:
+  port: 5555
+
+# routes to url 通过url直接映射
+# zuul.routes.api-a-url.path=/api-a-url/**
+# zuul.routes.api-a-url.url=http://localhost:2222/
+
+#该配置，定义了，所有到Zuul的中规则为：/api-a-url/**的访问都映射到http://localhost:2222/上，也就是说当我们访问http://localhost:5555/api-a-url/add?a=1&b=2的时候，Zuul会将该请求路由到：http://localhost:2222/add?a=1&b=2上。
+
+#Zuul注册到eureka server上去发现其他服务，就可以实现对serviceId的映射
+#zuul.routes.api-a.pat =/api-a/**
+#zuul.routes.api-a.serviceId=service-A
+#zuul.routes.api-b.path=/api-b/**
+#zuul.routes.api-b.serviceId=service-B
+#eureka.client.serviceUrl.defaultZone=http://localhost:1111/eureka/
+zuul:
+  routes:
+    api-a:
+      path: /api-a/**
+      serviceId: compute-service-A
+#    api-b:
+#      path: /api-b/**
+#      serviceId: compute-service-B
+#    customers: /customers/**
+eureka:
+  client:
+    service-url:
+         defaultZone: http://localhost:1111/eureka/
